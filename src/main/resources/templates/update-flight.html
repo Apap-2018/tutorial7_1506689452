@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Data Penerbangan</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar(title='Update Flight')"></nav>
+  	<div style="padding: 16px">
+    <h3>Flight Number: [[${flight.flightNumber}]]</h3>
+    <form th:action="@{/flight/update/{id}(id=${flight.id})}" th:object="${flight}" method="POST">
+    	<input type="hidden" th:value="${flight.flightNumber}" name="flightNumber" />	
+        <label>Origin:</label>
+        <input type="text" name="origin" th:value="${flight.origin}" />
+        <br>
+        <label>Destination:</label>
+        <input type="text" name="destination" th:value="${flight.destination}" />
+        <br>
+        <label>Time:</label>
+        <input type="date" name="time" th:value="${flight.time}" />
+        <br><br>
+        <input type="submit" value="Update">
+    </form>
+    </div>
+</body>
+</html>

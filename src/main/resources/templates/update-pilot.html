@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubah Data Pilot</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar(title='Update Pilot')"></nav>
+<div style="padding: 16px">
+    <h3>Pilot License Number: [[${pilot.licenseNumber}]]</h3>
+    <form th:action="@{/pilot/update/} + ${pilot.id}" th:object="${pilot}" method="POST">
+    	<input type="hidden" th:value="${pilot.id}" name="id" />
+    	<input type="hidden" th:value="${pilot.licenseNumber}" name="licenseNumber" />	
+        <label>Name:</label>
+        <input type="text" name="name" th:value="${pilot.name}" />
+        <br>
+        <label>Fly Hour:</label>
+        <input type="number" name="flyHour" th:value="${pilot.flyHour}" />
+        <br><br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>

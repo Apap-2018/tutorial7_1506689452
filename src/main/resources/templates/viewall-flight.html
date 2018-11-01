@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daftar Penerbangan</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar(title='Daftar Penerbangan')"></nav>
+    <div style="padding: 16px">
+    <h2>Daftar Semua Penerbangan</h2>
+    <table class="table table-hover table-sm" border="I" style="width:75%">
+    <tr>
+    <th>Flight Number</th>
+    <th>Origin</th> 
+    <th>Destination</th>
+    <th>Time</th>
+    <th>Pilot</th>
+    <th>Pilot License</th>
+    <th>Delete</th>
+    <th>Update</th>
+  	</tr>
+	<tr style="text-align:center;" th:each="flight: ${flight}">
+	    <td th:text="${flight.flightNumber}" />
+	    <td th:text="${flight.origin}" />
+	    <td th:text="${flight.destination}" />
+	    <td th:text="${flight.time}" />
+	    <td th:text="${flight.getPilot().getName()}" />
+	    <td th:text="${flight.getPilot().getLicenseNumber()}" />
+	    <td><a th:href="@{/flight/delete/{id}(id=${flight.id})}">Delete</a></td>
+		<td><a th:href="@{/flight/update/{id}(id=${flight.id})}">Update</a></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

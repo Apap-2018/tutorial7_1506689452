@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1">
+		<title>License Number Tidak Ditemukan!</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar(title='Data Tidak Ditemukan')"></nav>
+		<h1>License number yang anda cari tidak dapat ditemukan</h1>
+		<a href="/">Home</a>
+	</body>
+</html>
